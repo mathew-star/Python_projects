@@ -23,7 +23,7 @@ Key features include:
 
 By implementing industry-standard practices for password hashing and encryption, this tool aims to provide a robust solution for personal password management, making it easier to maintain good password hygiene without compromising on security.
 
-**Note:** This project is still under active development and has not yet reached its full potential. There are known issues and areas for improvement. Contributions and feedback are welcome as we work towards a more complete and robust solution.
+**Note:** !!  This project is still under active development and has not yet reached its full potential. There are known issues and areas for improvement. Contributions and feedback are welcome as we work towards a more complete and robust solution. !!
 
 ## Development Approach
 
