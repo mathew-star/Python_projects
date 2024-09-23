@@ -23,6 +23,26 @@ Key features include:
 
 By implementing industry-standard practices for password hashing and encryption, this tool aims to provide a robust solution for personal password management, making it easier to maintain good password hygiene without compromising on security.
 
+**Note:** This project is still under active development and has not yet reached its full potential. There are known issues and areas for improvement. Contributions and feedback are welcome as we work towards a more complete and robust solution.
+
+## Development Approach
+
+This project was developed with a focus on writing clean, maintainable, and extensible code. We adhered to several key software engineering principles:
+
+1. **SOLID Principles:** We have leveraged on SOLID principles to improve the quality of software.
+
+2. **Modular Architecture:** The project is organized into distinct modules (auth, password, storage) to separate concerns and improve maintainability.
+
+3. **Design Patterns:** We've implemented patterns like Dependency Injection (e.g., injecting the DataStore into the PasswordManager) to reduce coupling between components.
+
+4. **Code Structure and Organization:** The codebase follows a clear, logical structure with meaningful file and directory names, adhering to Python's PEP 8 style guide.
+
+5. **Error Handling and Logging:** Robust error handling is implemented throughout the application to improve reliability and user experience.
+
+6. **Security Best Practices:** We've implemented secure password hashing, encryption for stored passwords, and input validation to prevent common security vulnerabilities.
+
+While we've made efforts to follow these principles, we acknowledge that there's always room for improvement. As the project evolves, we continue to refine our approach and welcome contributions that align with these principles.
+
 ## Features
 
 - A simple user authentication system
