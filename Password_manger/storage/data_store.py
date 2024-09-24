@@ -45,6 +45,9 @@ class DataStore:
         data = self._load_data()
         if user.username not in data:
             data[user.username] = {}
+            
+        print(self.password_key)
+        print(password)
         try:
             encrypted_password = encrypt(password, self.password_key)
             data[user.username][service] = encrypted_password.decode('utf-8')  # Decode the bytes object to a string
@@ -69,8 +72,8 @@ class DataStore:
         try:
             with open(self.file_path, 'r') as f:
                 data = f.read()
-                print("###", data)
-                if data:  
+                if data:
+ 
                     return json.loads(data)
                 else:
                     return {}

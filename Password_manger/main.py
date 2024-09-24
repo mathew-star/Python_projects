@@ -1,6 +1,6 @@
 from termcolor import colored
 import pyfiglet
-from auth import User, Session
+from auth import User,Session
 from password import PasswordManager
 from storage import DataStore
 

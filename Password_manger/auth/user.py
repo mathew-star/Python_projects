@@ -15,7 +15,7 @@ class User:
     
     def create_session(self, duration: timedelta = timedelta(hours=1)) -> SessionModel:
         return SessionModel(
-            user_name=self.model.username,
+            username=self.model.username,
             expires_at=datetime.now() + duration
         )
         

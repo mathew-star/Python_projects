@@ -1,25 +1,46 @@
 import json
 from cryptography.fernet import Fernet
 
+class LoadKeyError(Exception):
+    pass
+
+class LoadingKeyException(LoadKeyError):
+    def __init__(self,message):
+        self.message= message
+
 def generate_key():
     """Generate a key for encryption and decryption"""
-    key = Fernet.generate_key()
-
-    with open("key.key", "wb") as key_file:
-        key_file.write(key)
-    return key
+    generated_key = Fernet.generate_key()
+    try:
+        loaded_key=load_key()
+        if loaded_key:
+            return loaded_key
+        else:
+            with open("key.key", "wb") as key_file:
+                key_file.write(generated_key)
+            return generated_key
+    except Exception as e:
+        raise LoadingKeyException(str(e))
+        
+    
 
 def load_key():
+
     """Load the key from the file
     we here have issues with key
     """
-    with open("key.key", "rb") as key_file:
-        key = key_file.read().decode('utf-8')
-    print(type(key))
-    if key:  
-        return json.loads(key)
-    else:
+    try:
+        with open("key.key", "rb") as key_file:
+            key = key_file.read()
+            if key:
+                return key.decode('utf-8')
+            else:return None
+    except FileNotFoundError:
         return None
+    except json.JSONDecodeError as e:
+            raise DataStoreError(f"Error loading data: {str(e)}")
+        
+        
 
 
 def encrypt(password, key):
