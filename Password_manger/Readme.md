@@ -41,7 +41,7 @@ This project was developed with a focus on writing clean, maintainable, and exte
 
 6. **Security Best Practices:** We've implemented secure password hashing, encryption for stored passwords, and input validation to prevent common security vulnerabilities.
 
-While we've made efforts to follow these principles, we acknowledge that there's always room for improvement. As the project evolves, we continue to refine our approach and welcome contributions that align with these principles.
+While I've made efforts to follow these principles, I acknowledge that there's always room for improvement. As the project evolves, I continue to refine my approach and welcome contributions that align with these principles.
 
 ## Features
 
@@ -54,14 +54,14 @@ While we've made efforts to follow these principles, we acknowledge that there's
 
 ## Requirements
 
-- Python 3.7+
+- Python 3.120
 - pip (Python package installer)
 
 ## Installation
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/python-password-manager.git
+   git clone https://github.com/mathew-star/python-password-manager.git
    cd python-password-manager
    ```
 
