@@ -28,7 +28,7 @@ This project was developed with a focus on writing clean, maintainable, and exte
 
 2. **Modular Architecture:** The project is organized into distinct modules (auth, password, storage) to separate concerns and improve maintainability.
 
-3. **Design Patterns:** We've implemented patterns like Dependency Injection (e.g., injecting the DataStore into the PasswordManager) to reduce coupling between components.
+3. **Design Patterns:** We've implemented patterns like Dependency Injection to reduce coupling between components.
 
 4. **Code Structure and Organization:** The codebase follows a clear, logical structure with meaningful file and directory names, adhering to Python's PEP 8 style guide.
 
