@@ -1,5 +1,8 @@
 # Real-Time Communication Server with Python (`asyncio` & `multiprocessing`)
 
+**Note:** !!  This project is still under active development and has not yet reached its full potential. There are known issues and areas for improvement. Contributions and feedback are welcome as we work towards a more complete and robust solution. !!
+
+
 ## Overview
 
 This project implements a real-time communication service using **Python's `asyncio` for I/O-bound tasks** and **`multiprocessing` for CPU-bound tasks**. The server can handle multiple clients simultaneously, broadcasting messages between them and utilizing worker processes to handle CPU-intensive operations in parallel.
@@ -13,6 +16,8 @@ This project implements a real-time communication service using **Python's `asyn
 - **Log Monitoring**: Logs key events, client connections, disconnections, and errors for monitoring the system.
 
 ---
+
+
 
 
 ## Development Approach
