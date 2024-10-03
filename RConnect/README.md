@@ -24,15 +24,14 @@ This project implements a real-time communication service using **Python's `asyn
 
 This project was developed with a focus on writing clean, maintainable, and extensible code. We adhered to several key software engineering principles:
 
-1. **SOLID Principles:** We have leveraged on SOLID principles to improve the quality of software.
 
-2. **Modular Architecture:** The project is organized into distinct modules (auth, password, storage) to separate concerns and improve maintainability.
+1. **Modular Architecture:** The project is organized into distinct modulesto separate concerns and improve maintainability.
 
-3. **Design Patterns:** We've implemented patterns like Dependency Injection to reduce coupling between components.
+2. **Design Patterns:** We've implemented patterns like Dependency Injection to reduce coupling between components.
 
-4. **Code Structure and Organization:** The codebase follows a clear, logical structure with meaningful file and directory names, adhering to Python's PEP 8 style guide.
+3. **Code Structure and Organization:** The codebase follows a clear, logical structure with meaningful file and directory names, adhering to Python's PEP 8 style guide.
 
-5. **Error Handling and Logging:** Robust error handling is implemented throughout the application to improve reliability and user experience.
+4. **Error Handling and Logging:** Robust error handling is implemented throughout the application to improve reliability and user experience.
 
 ## Project Structure
 
