@@ -2,3 +2,39 @@
 2024-10-04 02:59:16,467 - Server started and listening on 127.0.0.1:8888
 2024-10-04 03:00:04,817 - Logging started
 2024-10-04 03:00:04,817 - Server shutting down...
+2024-10-06 19:33:53,503 - Logging started
+2024-10-06 19:33:53,503 - Server started and listening on 127.0.0.1:8888
+2024-10-06 19:34:04,925 - Logging started
+2024-10-06 19:34:04,925 - Accepted connection from ('127.0.0.1', 54856)
+2024-10-06 19:34:52,650 - Logging started
+2024-10-06 19:34:52,650 - Received from ('127.0.0.1', 54856): @mathew:hellooo
+2024-10-06 19:34:52,651 - Logging started
+2024-10-06 19:34:52,651 - Broadcasting: From ('127.0.0.1', 54856): @mathew:hellooo
+2024-10-06 19:34:52,651 - Logging started
+2024-10-06 19:34:52,652 - Sending response to ('127.0.0.1', 54856)
+2024-10-06 19:35:27,001 - Logging started
+2024-10-06 19:35:27,001 - Accepted connection from ('127.0.0.1', 54859)
+2024-10-06 19:35:34,611 - Logging started
+2024-10-06 19:35:34,611 - Accepted connection from ('127.0.0.1', 54860)
+2024-10-06 19:35:47,359 - Logging started
+2024-10-06 19:35:47,360 - Received from ('127.0.0.1', 54856): @mathew:Hi
+2024-10-06 19:35:47,360 - Logging started
+2024-10-06 19:35:47,360 - Broadcasting: From ('127.0.0.1', 54856): @mathew:Hi
+2024-10-06 19:35:47,360 - Logging started
+2024-10-06 19:35:47,361 - Sending response to ('127.0.0.1', 54856)
+2024-10-06 19:35:47,361 - Logging started
+2024-10-06 19:35:47,361 - Sending response to ('127.0.0.1', 54859)
+2024-10-06 19:35:47,362 - Logging started
+2024-10-06 19:35:47,362 - Sending response to ('127.0.0.1', 54860)
+2024-10-06 19:36:15,533 - Logging started
+2024-10-06 19:36:15,535 - Received from ('127.0.0.1', 54860): @john:hi everyone
+2024-10-06 19:36:15,535 - Logging started
+2024-10-06 19:36:15,535 - Broadcasting: From ('127.0.0.1', 54860): @john:hi everyone
+2024-10-06 19:36:15,535 - Logging started
+2024-10-06 19:36:15,536 - Sending response to ('127.0.0.1', 54856)
+2024-10-06 19:36:15,536 - Logging started
+2024-10-06 19:36:15,537 - Sending response to ('127.0.0.1', 54859)
+2024-10-06 19:36:15,537 - Logging started
+2024-10-06 19:36:15,537 - Sending response to ('127.0.0.1', 54860)
+2024-10-06 19:36:49,252 - Logging started
+2024-10-06 19:36:49,252 - Server shutting down...

@@ -1,6 +1,6 @@
 # Real-Time Communication Server with Python (`asyncio` & `multiprocessing`)
 
-**Note:** !!  This project is still under active development and has not yet reached its full potential. There are known issues and areas for improvement. Contributions and feedback are welcome as we work towards a more complete and robust solution. !!
+**Note:**   
 
 
 ## Overview
