@@ -1,4 +1,13 @@
+"""
+we are building a csv reader, so usually we read Read csv like this >>
+import csv
 
+with open("sample.csv", "r", encoding="utf-8") as f:
+    rows = list(csv.reader(f))   # <-- loads ALL rows into RAM
+
+But in this program we are building a custom csv parser , which reads without loading the whole file into the memory.
+we here use iterator to lazily read the file line by line..
+"""
 import csv
 
 class CSVIterator:
@@ -47,15 +56,3 @@ class FileLineIterator:
             self.file.close()
 
 
-
-with open("sample.csv", "w") as f:
-    for i  in range(20):
-        f.write("name,age,city\n")
-        f.write(f"Alice{i},30+{i},London{i}\n")
-
-
-
-
-print("Reading file:")
-for line in FileLineIterator('sample.csv'):
-    print(f"  {line}")
