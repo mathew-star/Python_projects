@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Raw binary (baseline)",
+    "time_seconds": 17.746455731000196,
+    "rss_start_mb": 10.5,
+    "rss_peak_mb": 10.75,
+    "rss_end_mb": 10.75,
+    "rss_delta_mb": 0.25,
+    "rows_processed": 32550001
+  },
+  {
+    "label": "csv.reader (streaming)",
+    "time_seconds": 37.131300209000074,
+    "rss_start_mb": 11.75,
+    "rss_peak_mb": 11.75,
+    "rss_end_mb": 11.75,
+    "rss_delta_mb": 0.0,
+    "rows_processed": 32550001
+  },
+  {
+    "label": "pandas (chunked)",
+    "time_seconds": 114.68085311899995,
+    "rss_start_mb": 67.23828125,
+    "rss_peak_mb": 98.00390625,
+    "rss_end_mb": 86.23828125,
+    "rss_delta_mb": 19.0,
+    "rows_processed": 32550000
+  }
+]

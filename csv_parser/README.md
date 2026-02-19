@@ -40,7 +40,7 @@ This lets us:
 
 -   Build pipelines (transform → validate → process → export)
 
--   Swap filesystem input for future sources (S3 stream, network socket, etc.)
+
 
 
 
@@ -71,7 +71,7 @@ Behaves predictably for ETL, data processing, and production workloads
 *Benchmark Results of different size files*
 
 
- ➜  csv_parser git:(main) ✗ python analyze.py
+ ➜  csv_parser : python analyze.py
 
 101
 
@@ -111,47 +111,12 @@ Python csv.reader + list()          |   1.142478 |        82405.15
 
 pandas.read_csv                     |   0.566809 |        53519.46
 
-(.venv) ➜  csv_parser git:(main) ✗
 
 
 
 
 
 
-**Analysis**
-============
-
-** 1. Custom Lazy CSVIterator**
--------------------------------
-
- **Fast (0.52s)**\
- **Ultra-low memory (55 KB)**\
- Direct streaming --- memory stays constant regardless of file size\
- Perfect for large ETL pipelines, server backends, streaming jobs
-
-This method would still use ~55 KB even for a **10GB CSV file**.
-
-* * * * *
-
-** 2. Python csv.reader + list()**
-----------------------------------
-
- **Slowest (1.14s)**\
- **Huge memory usage (82 MB)**\
- Unscalable --- loads entire CSV into a list\
- OK for tiny files, but not for production or large datasets.
-
-* * * * *
-
-** 3. pandas.read_csv**
------------------------
-
- **Very fast (0.56s)**\
- **High memory usage (53 MB)**\
- Ideal for data exploration and ML\
- Not suitable for multi-GB CSV files (will crash without chunking)
-
-* * * * *
 
 
 
