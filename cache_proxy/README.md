@@ -1,68 +1,134 @@
-# Cache Proxy -- > Phase 1
+# Cache Proxy
 
-A cli-driven cache proxy  build with fastapi and httpx
+A small SDK-style caching HTTP proxy built with FastAPI, httpx, Click, and a
+from-scratch LRU cache.
 
-which the help of cli , now we can run the proxy on a port and give the target origin, to where 
-we start forwarding the requests on first hit(miss) , and serving from cache from next one.
+## What It Teaches
 
-### How the pieces connect
+- async request forwarding with `httpx.AsyncClient`
+- FastAPI lifespan context managers
+- CLI design with `click`
+- LRU cache internals with hashmap + doubly linked list
+- stable cache key construction
+- package entry points with `uv`
 
-main.py   --> CLI (we defined the commands and server startup here)
+## Run The CLI
 
-server.py --> Fastapi + proxy route
+From the repository root:
 
-proxy.py --> Httpx request to the origin
-
-cache.py --> simple cache with common methods(get / set / clear)
-
-`server.py` owns the lifespan — it creates one shared `httpx.AsyncClient`
-(connection pool) and one `DictCache` instance at startup, stores both on
-`app.state`, and passes them into every request handler. Nothing is a
-bare global except `ORIGIN`, which the CLI sets before `uvicorn.run()`.
-
-## Installation
 ```bash
-git clone <your-repo>
-cd cache_proxy
- 
-python -m venv .venv
-source .venv/bin/activate       # Windows: .venv\Scripts\activate
- 
-pip install -r requirements.txt
+uv sync
+uv run cache-proxy --help
 ```
 
+Start the proxy:
 
-## Running it
- 
-You need two terminals — one for the origin server, one for the proxy.
- 
-**Terminal 1 — start the origin (fake backend)**
 ```bash
-uvicorn fake_backend:app --port 9000 --reload
-```
- 
-**Terminal 2 — start the proxy**
-```bash
-python main.py run --port 8000 --origin http://localhost:9000
-```
- 
-Now all traffic through `localhost:8000` is proxied (and cached) to `localhost:9000`.
- 
----
-
-## CLI commands
- 
-### `run` — start the proxy
- 
-```bash
-python main.py run --port PORT --origin URL
-
-#To clear cache >>
-python main.py clear-cache --port PORT
-
+uv run cache-proxy run --port 8000 --origin http://localhost:9000
 ```
 
+Useful options:
 
-## What's Next Phase 
-Next we will improve the folder structure , add some extra layers.
-Main thing is we needed to implement LRU cache from scratch
+```bash
+uv run cache-proxy run \
+  --port 8000 \
+  --origin http://localhost:9000 \
+  --cache-capacity 128 \
+  --cache-method GET \
+  --cache-method HEAD \
+  --timeout 30
+```
+
+Check cache stats:
+
+```bash
+uv run cache-proxy stats --port 8000
+```
+
+Clear the cache:
+
+```bash
+uv run cache-proxy clear-cache --port 8000
+```
+
+## Real Manual Test With FastAPI
+
+Terminal 1: start the sample origin server.
+
+```bash
+uv run uvicorn cache_proxy.examples.sample_origin:app --port 9000 --reload
+```
+
+Terminal 2: start the cache proxy.
+
+```bash
+uv run cache-proxy run --port 8000 --origin http://localhost:9000
+```
+
+Terminal 3: call the proxy.
+
+```bash
+curl -i http://localhost:8000/time
+curl -i http://localhost:8000/time
+```
+
+The first response should include:
+
+```text
+X-Cache: MISS
+```
+
+The second response should include:
+
+```text
+X-Cache: HIT
+```
+
+The JSON body should stay the same on the cache hit because it came from the
+proxy cache instead of the origin server.
+
+Check stats:
+
+```bash
+uv run cache-proxy stats --port 8000
+```
+
+Expected shape:
+
+```text
+size=1
+capacity=128
+hits=1
+misses=1
+```
+
+## SDK Usage
+
+You can also create the ASGI app directly:
+
+```python
+from cache_proxy import ProxyConfig, create_app
+
+app = create_app(
+    ProxyConfig(
+        origin="http://localhost:9000",
+        cache_capacity=256,
+    )
+)
+```
+
+## Current Cache Policy
+
+By default, only `GET` and `HEAD` responses are cached. This is intentional:
+`POST`, `PUT`, `PATCH`, and `DELETE` can have side effects, so caching them by
+default would be unsafe.
+
+You can opt into other methods from the CLI:
+
+```bash
+uv run cache-proxy run \
+  --port 8000 \
+  --origin http://localhost:9000 \
+  --cache-method GET \
+  --cache-method POST
+```
